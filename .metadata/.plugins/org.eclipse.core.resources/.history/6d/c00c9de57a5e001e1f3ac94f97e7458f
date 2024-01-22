@@ -1,0 +1,34 @@
+package Array_problems;
+
+public class _5_Find_Minimum_freq_element_in_array 
+{
+
+	
+	public static void main(String[] args) {
+		
+        int[] arr = {3, 3,2,3,4,5,7,9,9,9,9,99,99,99,99,99,99,99};
+       int min=arr[0];
+       int minf=0;
+       for(int i=0;i<arr.length;i++)
+       {
+    	   int curr=arr[i];
+    	   int curf=1;
+    	   for(int j=i+1;j<arr.length;j++)
+    	   {
+    		   if(arr[j]<curr)
+    		   {
+    			   curf++;
+    		   }
+    		  
+    	   }
+    	   if(minf>curf)
+    	   {
+    		   minf=curf;
+    		   min=arr[i];
+    	   }
+       }
+       
+       System.out.println("min ele"+min+" freq"+minf);
+	}
+
+}

@@ -1,0 +1,71 @@
+package Array_Searching_And_Sorting_problrms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ElevatorSequence {
+
+    public static void findFloorSequence(String direction, int currentFloor, List<Integer> floorRequests) {
+        // Check for invalid direction
+        if (!direction.equals("UP") && !direction.equals("DN")) {
+            System.out.println("Invalid direction");
+            return;
+        }
+
+        // Check for invalid current floor
+        if (currentFloor < 0) {
+            System.out.println("Invalid current floor");
+            return;
+        }
+
+        // Check for invalid floor requests
+        for (int floorRequest : floorRequests) {
+            if (floorRequest < 0) {
+                System.out.println("Invalid floor request: " + floorRequest);
+                return;
+            }
+        }
+
+        // Sort the floor requests in ascending order
+        floorRequests.sort((a, b) -> a - b);
+
+        // Process requests based on the direction
+        if (direction.equals("UP")) {
+            // Process upward requests
+            for (int floorRequest : floorRequests) {
+                if (floorRequest >= currentFloor) {
+                    System.out.print(floorRequest + " ");
+                }
+            }
+
+            // Process downward requests
+            for (int floorRequest = floorRequests.size() - 1; floorRequest >= 0; floorRequest--) {
+                if (floorRequest < currentFloor) {
+                    System.out.print(floorRequest + " ");
+                }
+            }
+        } else { // direction is "DN"
+            // Process downward requests
+            for (int floorRequest : floorRequests) {
+                if (floorRequest <= currentFloor) {
+                    System.out.print(floorRequest + " ");
+                }
+            }
+
+            // Process upward requests
+            for (int floorRequest = 0; floorRequest < floorRequests.size(); floorRequest++) {
+                if (floorRequest > currentFloor) {
+                    System.out.print(floorRequest + " ");
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        String direction = "UP";
+        int currentFloor = 6;
+        List<Integer> floorRequests = Arrays.asList(1, 3, 10, 7, 8, 0);
+
+        findFloorSequence(direction, currentFloor, floorRequests);
+    }
+}

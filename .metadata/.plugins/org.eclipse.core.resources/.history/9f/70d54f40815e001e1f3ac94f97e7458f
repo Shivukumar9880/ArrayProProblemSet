@@ -1,0 +1,24 @@
+package Array_problems;
+
+public class _9_Remove_duplicates_from_Array {
+public static void main(String[] args) {
+	
+	int arr[] = {1,2,2,4,5,5,6,2};
+	int a[] = new int[arr.length];
+	
+	for(int i=0;i<arr.length-1; i++)
+	{
+		
+			if(arr[i]!=arr[i+1])
+			{
+				a[i]=arr[i];
+			}
+		}
+	for(int i=0;i<a.length; i++)
+	{
+		System.out.print(a[i]);
+	}
+	}
+
+}
+

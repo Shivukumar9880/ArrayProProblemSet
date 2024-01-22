@@ -1,0 +1,74 @@
+package Array_problems;
+
+public class _9_Remove_duplicates_from_Array {
+public static void main(String[] args) {
+	
+	int arr[] = {1,2,4,5,2,5,6,2};
+	
+	
+	for(int i=0; i<arr.length; i++)
+	{
+		for(int j=i+1; i<arr.length-1;j++)
+		{
+			if(arr[j]!=arr[j+1])
+			{
+				System.out.println(arr[i]);
+				arr[j] =-1;
+			}
+		}
+	}
+}
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	int count =0;
+//	
+//	for(int i=0;i<arr.length-1; i++)
+//	{
+//		
+//			if(arr[i]!=arr[i+1])
+//			{
+//				count++;
+//				
+//			}
+//		}
+//System.out.println(count);
+//	int a[] = new int[count];
+//	System.out.println(arr.length-1);
+//	
+//	
+//	int k=0;
+//	
+//	
+//	for(int i=0;i<arr.length-1; i++)
+//	{
+//		
+//			if(arr[i]!=arr[i+1])
+//			{
+//				a[k++]=arr[i];
+//				
+//			}
+//		}
+//	
+//	
+//	for(int i=0;i<a.length; i++)
+//	{
+//		if(a[i]!=0)
+//		System.out.print(a[i]);
+//	}
+//	}
+
+
+

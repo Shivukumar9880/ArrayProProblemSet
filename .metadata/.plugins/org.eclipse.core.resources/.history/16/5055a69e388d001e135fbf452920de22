@@ -1,0 +1,43 @@
+package Array_Searching_And_Sorting_problrms;
+public class SumOfLargestAndSmallestPrimes {
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static int sumPrime(int rangeLeft, int rangeRight) {
+        int smallestPrime = Integer.MAX_VALUE;
+        int largestPrime = Integer.MIN_VALUE;
+
+        for (int num = rangeLeft; num <= rangeRight; num++) {
+            if (isPrime(num)) {
+                smallestPrime = Math.min(num, smallestPrime);
+                largestPrime = Math.max(num, largestPrime);
+            }
+        }
+
+        if (smallestPrime == Integer.MAX_VALUE || largestPrime == Integer.MIN_VALUE) {
+            return 0;
+        }
+
+        return smallestPrime + largestPrime;
+    }
+
+    public static void main(String[] args) {
+        int rangeLeft = 30;
+        int rangeRight = 50;
+
+        int sum = sumPrime(rangeLeft, rangeRight);
+        System.out.println(sum);
+    }
+}

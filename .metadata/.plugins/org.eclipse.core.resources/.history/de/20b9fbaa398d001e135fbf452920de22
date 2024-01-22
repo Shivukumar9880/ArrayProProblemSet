@@ -1,0 +1,65 @@
+package Array_Searching_And_Sorting_problrms;
+import java.util.Scanner;
+
+public class Solution {
+
+    public static int sumPrime(int rangeLeft, int rangeRight) {
+        int smallestPrime = Integer.MAX_VALUE;
+        int largestPrime = Integer.MIN_VALUE;
+        boolean foundSmallest = false;
+        boolean foundLargest = false;
+
+        for (int num = rangeLeft; num <= rangeRight; num++) {
+            if (isPrime(num)) {
+                if (num < smallestPrime) {
+                    smallestPrime = num;
+                    foundSmallest = true;
+                }
+                if (num > largestPrime) {
+                    largestPrime = num;
+                    foundLargest = true;
+                }
+            }
+        }
+
+        if (foundSmallest && foundLargest) {
+            return smallestPrime + largestPrime;
+        } else {
+            // Return -1 if either the smallest or largest prime is not found
+            return -1;
+        }
+    }
+
+    // Helper method to check if a number is prime
+    private static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        // input for rangeLeft
+        System.out.print("Enter the left range: ");
+        int rangeLeft = in.nextInt();
+
+        // input for rangeRight
+        System.out.print("Enter the right range: ");
+        int rangeRight = in.nextInt();
+
+        int result = sumPrime(rangeLeft, rangeRight);
+
+        if (result != -1) {
+            System.out.println("Sum of the smallest and largest prime numbers in the given range: " + result);
+        } else {
+            System.out.println("Both the smallest and largest primes are not present in the given range.");
+        }
+    }
+}

@@ -1,0 +1,40 @@
+package Array_Searching_And_Sorting_problrms;
+import java.util.Scanner;
+
+public class DesktopProductCount {
+
+    public static int countDesktopProducts(int numOfProducts, char[] productIDs) {
+        int count = 0;
+
+        for (char productID : productIDs) {
+            if (isDesktopProduct(productID)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private static boolean isDesktopProduct(char productID) {
+        // Check if the productID is 'e' or 'E' for this example
+        return Character.toLowerCase(productID) == 'e';
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        // Input for the number of products
+        System.out.print("Enter the number of products: ");
+        int numOfProducts = in.nextInt();
+
+        // Input for product IDs
+        System.out.print("Enter the product IDs separated by spaces: ");
+        char[] productIDs = new char[numOfProducts];
+        for (int i = 0; i < numOfProducts; i++) {
+            productIDs[i] = in.next().charAt(0);
+        }
+
+        int result = countDesktopProducts(numOfProducts, productIDs);
+        System.out.println("Number of desktop products among the given sales data: " + result);
+    }
+}

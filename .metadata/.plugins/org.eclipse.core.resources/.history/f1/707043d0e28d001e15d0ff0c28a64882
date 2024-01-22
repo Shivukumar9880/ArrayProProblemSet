@@ -1,0 +1,90 @@
+package Array_Searching_And_Sorting_problrms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Result {
+    public static void findFloorSequence(String direction, int currentFloor, List<Integer> floorRequests) {
+        if (direction.equals("UP")) {
+            // Sort floorRequests in ascending order
+            Collections.sort(floorRequests);
+
+            // Find the first stop in the upward direction
+            int firstUpwardStop = -1;
+            for (int floor : floorRequests) {
+                if (floor >= currentFloor) {
+                    firstUpwardStop = floor;
+                    break;
+                }
+            }
+
+            // If no upward stops found, set firstUpwardStop to the topmost requested floor
+            if (firstUpwardStop == -1) {
+                firstUpwardStop = floorRequests.get(floorRequests.size() - 1);
+            }
+
+            // Print the stops in the upward direction
+            for (int floor : floorRequests) {
+                if (floor <= firstUpwardStop) {
+                    System.out.println("Stopping at floor " + floor);
+                }
+            }
+
+            // Print the stops in the downward direction
+            for (int i = floorRequests.size() - 1; i >= 0; i--) {
+                int floor = floorRequests.get(i);
+                if (floor > firstUpwardStop) {
+                    System.out.println("Stopping at floor " + floor);
+                }
+            }
+        } else if (direction.equals("DN")) {
+            // Sort floorRequests in descending order
+            Collections.sort(floorRequests, Collections.reverseOrder());
+
+            // Find the first stop in the downward direction
+            int firstDownwardStop = -1;
+            for (int floor : floorRequests) {
+                if (floor <= currentFloor) {
+                    firstDownwardStop = floor;
+                    break;
+                }
+            }
+
+            // If no downward stops found, set firstDownwardStop to the bottommost requested floor
+            if (firstDownwardStop == -1) {
+                firstDownwardStop = floorRequests.get(floorRequests.size() - 1);
+            }
+
+            // Print the stops in the downward direction
+            for (int floor : floorRequests) {
+                if (floor >= firstDownwardStop) {
+                    System.out.println("Stopping at floor " + floor);
+                }
+            }
+
+            // Print the stops in the upward direction
+            for (int i = floorRequests.size() - 1; i >= 0; i--) {
+                int floor = floorRequests.get(i);
+                if (floor < firstDownwardStop) {
+                    System.out.println("Stopping at floor " + floor);
+                }
+            }
+        } else {
+            System.out.println("Invalid direction");
+        }
+    }
+
+    public static void main(String[] args) {
+        String direction = "UP";
+        int currentFloor = 6;
+        List<Integer> floorRequests = new ArrayList<>();
+        floorRequests.add(1);
+        floorRequests.add(3);
+        floorRequests.add(10);
+        floorRequests.add(7);
+        floorRequests.add(0);
+        floorRequests.add(8);
+
+        findFloorSequence(direction, currentFloor, floorRequests);
+    }
+}

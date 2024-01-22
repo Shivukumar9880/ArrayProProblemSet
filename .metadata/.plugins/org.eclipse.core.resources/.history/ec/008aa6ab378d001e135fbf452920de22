@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Solution {
+
+    public static int sumPrime(int rangeLeft, int rangeRight) {
+        int smallestPrime = Integer.MAX_VALUE;
+        int largestPrime = Integer.MIN_VALUE;
+
+        for (int num = rangeLeft; num <= rangeRight; num++) {
+            if (isPrime(num)) {
+                // Update the smallest and largest prime numbers
+                smallestPrime = Math.min(smallestPrime, num);
+                largestPrime = Math.max(largestPrime, num);
+            }
+        }
+
+        return smallestPrime + largestPrime;
+    }
+
+    // Helper method to check if a number is prime
+    private static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        // input for rangeLeft
+        System.out.print("Enter the left range: ");
+        int rangeLeft = in.nextInt();
+
+        // input for rangeRight
+        System.out.print("Enter the right range: ");
+        int rangeRight = in.nextInt();
+
+        int result = sumPrime(rangeLeft, rangeRight);
+        System.out.println("Sum of the smallest and largest prime numbers in the given range: " + result);
+    }
+}

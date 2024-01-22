@@ -1,0 +1,23 @@
+package achiving_preDefined_methods_with_my_logic_of_array;
+
+public class Array 
+{
+
+	
+	public  static void display( int[] arr)
+	{
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			System.out.print(arr[i]+" -> ");
+			
+		}
+		System.out.println("null");
+	}
+	public static void main(String[] args) {
+		
+		Array.display(new int[] {10,20,0,40,50});
+	}
+	
+	
+}

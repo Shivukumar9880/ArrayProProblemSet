@@ -1,0 +1,16 @@
+package Array_problems;
+
+public class _5_Find_Minimum_freq_element_in_array 
+{
+	int[] findminfreq(int[] arr)
+	{
+		
+	}
+	
+	public static void main(String[] args) {
+		
+        int[] arr = {3, 3,2,3,4,5,7,9,9,9,9,99,99,99,99,99,99,99};
+      
+	}
+
+}

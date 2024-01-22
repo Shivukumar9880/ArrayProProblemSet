@@ -1,0 +1,55 @@
+package Array_Searching_And_Sorting_problrms;
+
+import java.util.Scanner;
+
+public class PrimeNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the range
+        System.out.println("Enter the range:");
+        int range = scanner.nextInt();
+
+        // Find the sum of the largest and smallest prime numbers
+        int smallestPrime = findSmallestPrime(range);
+        int largestPrime = findLargestPrime(range);
+
+        int sum = smallestPrime + largestPrime;
+
+        // Output the result
+        System.out.println("Sum of the smallest and largest prime numbers: " + sum);
+    }
+
+    // Function to check if a number is prime
+    private static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Function to find the smallest prime number in the range
+    private static int findSmallestPrime(int range) {
+        for (int i = 2; i <= range; i++) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
+        return -1; // No prime number found in the range
+    }
+
+    // Function to find the largest prime number in the range
+    private static int findLargestPrime(int range) {
+        for (int i = range; i >= 2; i--) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
+        return -1; // No prime number found in the range
+    }
+}
